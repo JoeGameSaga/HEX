@@ -12,7 +12,6 @@ import hex.ui.camera.HCam;
  */
 public class Main extends SimpleApplication {
     
-    //////////////////////////////////
     
        ModelLoader modelLoader = null;
        HUI hexUI = null;
