@@ -1,0 +1,118 @@
+
+JGS GitHub Entrance Exam
+
+No more than one or two sentences per question. Email completed exam to dev.joegamesaga@gmail.com. You must get four of five questions per section correct and a final score of 20 or higher to be considered as a collaborator to the github.com/JoeGameSaga/HEX repository. Included are the most excellent learning resources I have found. See you on the other side! -Joseph
+
+
+Personnel Details
+------------------------------
+
+GitHub account name:
+
+Programming Languages (in order of experience):
+
+Spoken Languages (in order of experience):
+
+Software Tools (in order of experience):
+
+Best Software Project (if any):
+
+
+
+
+Section A: Basics
+------------------------------
+
+A1. What is version control and why is it useful?
+
+A2. What is a collaborator?
+
+A3. What is the difference between git and subversion?
+
+A4. What is the difference between git and GitHub?
+
+A5. How do you create a local git repository?
+
+
+
+Section B: Branches
+------------------------------
+
+B1. What is the purpose of branches?
+
+B2. How do you switch branches?
+
+B3. How do you delete a branch?
+
+B4. How do you checkout older commits?
+
+B5. What git command allows you to visualise branches?
+
+
+
+Section C: Collaborating
+------------------------------
+
+C1. What is a remote?
+
+C2. How do you create a remote?
+
+C3. What is the difference between a commit and a push?
+
+C4. What is the difference between using fetch and rebase verses pull?
+
+C5. How do you undo a commit?
+
+
+
+Section D: Advanced Concepts
+------------------------------
+
+D1. What is a fast forward merge?
+
+D2. What is the purpose of a bare repo?
+
+D3. What is the purpose of tagging?
+
+D4. How do you add all new files to the stage in one command?
+
+D5. What is the purpose of the staging area instead of committing all changes?
+
+
+
+Section E: Misc
+------------------------------
+
+E1. Why was git originally concieved?
+
+E2. What is the difference between clone and init?
+
+E3. What is "git diff" for?
+
+E4. What does "origin/master" mean?
+
+E5. How do you check what is currently out of sync with origin?
+
+
+
+
+Learning Resources
+------------------------------
+
+http://try.github.com/levels/1/challenges/1
+
+http://git-scm.com/videos
+
+http://git-scm.com/book
+
+http://git-scm.com/downloads
+
+http://blip.tv/open-source-developers-conference/git-for-ages-4-and-up-4460524
+
+http://www.youtube.com/watch?v=OFkgSjRnay4
+
+http://nfarina.com/post/9868516270/git-is-simpler
+
+http://githowto.com/
+
+http://rogerdudler.github.com/git-guide/files/git_cheat_sheet.pdf
