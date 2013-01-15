@@ -30,7 +30,7 @@ public class HCam {
         return new HCam(camera, new FlyByCamera(camera), 400, 5000);
     }
     public static HCam create(Camera c, FlyByCamera fbc) {
-        return new HCam(c, fbc, 400, 5000);
+        return new HCam(c, fbc, 1500, 5000);
     }
     
     public Camera getCamera(){
