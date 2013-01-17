@@ -41,7 +41,7 @@ public class ModelLoader {
         hexBlockGrid.add(HexBlock.create(rn, am, 0, 0, 6));
         hexBlockGrid.add(HexBlock.create(rn, am, 6, 0, 6));
         hexBlockGrid.add(HexBlock.create(rn, am, 2, 6, 2));
-        //sun = createSunlight();
+        sun = createSunlight();
     }
     
     

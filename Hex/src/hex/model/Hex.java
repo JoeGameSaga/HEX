@@ -5,10 +5,14 @@
 package hex.model;
 
 import com.jme3.asset.AssetManager;
+import com.jme3.asset.TextureKey;
+import com.jme3.material.MatParamTexture;
 import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import com.jme3.texture.Texture;
 
 /**
  *
@@ -19,7 +23,7 @@ public class Hex {
     private static Vector3f position = new Vector3f(0,0,0);
     private Spatial hex = null;
     private float xWitdh = 86;
-    private float yHeight = xWitdh/2;
+    private float yHeight = (xWitdh/2)-1;
     private float zLenght = 150;
 
     private Hex(AssetManager assetManager, Vector3f pos){
@@ -36,17 +40,22 @@ public class Hex {
     }
     
     private void loadBasicHex(AssetManager assetManager){
-       hex = assetManager.loadModel("Models/Hex/hex.j3o");
+        hex = assetManager.loadModel("Models/Hex/hex.j3o");
         
-        //hex = assetManager.loadModel("Models/Teapot/Teapot.obj");       
         Material mat = new Material( 
             assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-        mat.setTexture("ColorMap", 
-            assetManager.loadTexture("Textures/hex.png"));
-         mat.setTexture("ColorMap", 
-            assetManager.loadTexture("Textures/Terrain/BrickWall/BrickWall.jpg"));
-        hex.setMaterial(mat);
+        TextureKey textureKey = new TextureKey("Models/Hex/hex.png", true);
+        textureKey.setAnisotropy(4);
+        textureKey.setGenerateMips(true);
+        Texture loadTexture = assetManager.loadTexture(textureKey);
+        loadTexture.setMagFilter(Texture.MagFilter.Nearest);
+        mat.setTexture("ColorMap", loadTexture);
         
+        //relates to debug mode later
+        mat.setColor("ColorMap", ColorRGBA.Blue); 
+        
+        hex.setMaterial(mat);
+                
         hex.setLocalTranslation(Vector3f.ZERO);
         hex.scale(100);
         hex.move(position);

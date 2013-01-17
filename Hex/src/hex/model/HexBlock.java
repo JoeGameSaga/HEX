@@ -28,11 +28,12 @@ public class HexBlock {
         am = assetManager;
         rn = rootNode;
       
-        float x = 87;
-        float y = 43;
+        float x = 86;
+        float y = 44;
         float z = 150;
         
-        /*createHex(x*0,y*0,z*0);
+        /*
+        createHex(x*0,y*0,z*0);
         createHex(x*1,y*0,z*1);
         createHex(x*2,y*0,z*0);
         createHex(x*3,y*0,z*1);
@@ -54,6 +55,7 @@ public class HexBlock {
         createHex(x*2,y*1,z*4);
         createHex(x*3,y*1,z*5);
         */
+                
         populateHexGrid(xc,yc,zc);
     }
     
