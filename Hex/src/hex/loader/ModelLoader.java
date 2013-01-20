@@ -9,7 +9,9 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import hex.model.HexBlock;
+import hex.model.Lucy;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
@@ -22,6 +24,7 @@ public class ModelLoader {
     private DirectionalLight sun = null;
     
     private ArrayList<HexBlock> hexBlockGrid = new ArrayList<HexBlock>();
+    private Lucy lucy = null;
     
     private ModelLoader(){
         createDemoHex();
@@ -41,6 +44,10 @@ public class ModelLoader {
         hexBlockGrid.add(HexBlock.create(rn, am, 0, 0, 6));
         hexBlockGrid.add(HexBlock.create(rn, am, 6, 0, 6));
         hexBlockGrid.add(HexBlock.create(rn, am, 2, 6, 2));
+        
+        lucy = Lucy.createLucy(am, new Vector3f());
+        lucy.setPosition(270,410,1100);
+        lucy.attachToNode(rn);
         sun = createSunlight();
     }
     
