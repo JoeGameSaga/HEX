@@ -10,6 +10,7 @@ import com.jme3.material.MatParamTexture;
 import com.jme3.material.Material;
 import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
@@ -45,16 +46,23 @@ public class Hex {
         Material mat = new Material( 
             assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
         TextureKey textureKey = new TextureKey("Models/Hex/hex.png", true);
-        //textureKey.setAnisotropy(4);
-        //textureKey.setGenerateMips(true);
+        textureKey.setAnisotropy(4);
+        textureKey.setGenerateMips(true);
         Texture loadTexture = assetManager.loadTexture(textureKey);
         loadTexture.setMagFilter(Texture.MagFilter.Nearest);
         mat.setTexture("ColorMap", loadTexture);
-        
         //relates to debug mode later
-        mat.setColor("ColorMap", ColorRGBA.Blue); 
+        //mat.setColor("ColorMap", ColorRGBA.Blue); 
+        
+        //mat.setTexture("DiffuseMap", loadTexture);
+        //mat.setBoolean("UseMaterialColors",true);
+        //mat.setColor("Specular",ColorRGBA.White);
+        //mat.setColor("Diffuse",ColorRGBA.White);
+        //mat.setFloat("Shininess", 0f);
+        
         
         hex.setMaterial(mat);
+        hex.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
                 
         hex.setLocalTranslation(Vector3f.ZERO);
         hex.scale(100);

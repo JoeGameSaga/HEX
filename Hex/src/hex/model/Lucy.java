@@ -7,7 +7,9 @@ package hex.model;
 import com.jme3.asset.AssetManager;
 import com.jme3.asset.TextureKey;
 import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
 import com.jme3.texture.Texture;
@@ -23,6 +25,7 @@ public class Lucy {
     private float xWitdh = 86;
     private float yHeight = (xWitdh/2)-1;
     private float zLenght = 150;
+    private Material mat = null;
     
     
     
@@ -42,15 +45,20 @@ public class Lucy {
     
     private void loadLucy(AssetManager assetManager){
         lucy = assetManager.loadModel("Models/Lucy/lucy.j3o");
-        
-        Material mat = new Material( 
-            assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        lucy.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+       
+        mat = new Material( 
+            assetManager, "Common/MatDefs/Light/Lighting.j3md");
         TextureKey textureKey = new TextureKey("Models/Lucy/lucy.png", true);
         textureKey.setAnisotropy(4);
         textureKey.setGenerateMips(true);
         Texture loadTexture = assetManager.loadTexture(textureKey);
         loadTexture.setMagFilter(Texture.MagFilter.Nearest);
-        mat.setTexture("ColorMap", loadTexture);
+        mat.setBoolean("UseMaterialColors",true);
+        mat.setTexture("DiffuseMap", loadTexture);
+        mat.setColor("Specular",ColorRGBA.White);
+        mat.setColor("Diffuse",ColorRGBA.White);
+        mat.setFloat("Shininess", 0f);
         
         lucy.setMaterial(mat);
                 

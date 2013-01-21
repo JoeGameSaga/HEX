@@ -24,7 +24,7 @@ public class Main extends SimpleApplication {
 
     @Override
     public void simpleInitApp() {  
-       modelLoader = ModelLoader.create(this.getRootNode(), this.getAssetManager());
+       modelLoader = ModelLoader.create(this.getRootNode(), this.getAssetManager(), this.viewPort);
        hCam = HCam.create(this.getViewPort().getCamera(), this.getFlyByCamera());
        hexUI = HUI.create(hCam, this.getAssetManager(), this.getGuiNode(), this.guiFont); 
        hexUI.writeText("Hello Lucy!");

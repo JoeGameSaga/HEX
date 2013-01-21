@@ -7,7 +7,10 @@ package hex.loader;
 import com.jme3.asset.AssetManager;
 import com.jme3.light.DirectionalLight;
 import com.jme3.math.Vector3f;
+import com.jme3.renderer.ViewPort;
+import com.jme3.renderer.queue.RenderQueue;
 import com.jme3.scene.Node;
+import com.jme3.shadow.BasicShadowRenderer;
 import hex.model.HexBlock;
 import hex.model.Lover;
 import hex.model.Lucy;
@@ -23,7 +26,9 @@ public class ModelLoader {
     
     private static AssetManager am;
     private static Node rn;
+    private static ViewPort vp;
     private DirectionalLight sun = null;
+    private BasicShadowRenderer shadow = null;
     
     private ArrayList<HexBlock> hexBlockGrid = new ArrayList<HexBlock>();
     private Lucy lucy = null;
@@ -38,9 +43,11 @@ public class ModelLoader {
         createDemoHex();
     }
 
-    public static ModelLoader create(Node rootNode, AssetManager assetManager) {
+    public static ModelLoader create(Node rootNode, AssetManager assetManager, ViewPort viewPort) {
        am = assetManager;
        rn = rootNode;
+       vp = viewPort;
+       //rn.setShadowMode(RenderQueue.ShadowMode.Off);
        return new ModelLoader();
     }
     
@@ -90,16 +97,28 @@ public class ModelLoader {
         
         
         sun = createSunlight();
+        shadow = createShadows();
     }
     
     
     private DirectionalLight createSunlight(){
         
         DirectionalLight s = new DirectionalLight();
-        s.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f));
+        //s.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal());
+        s.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal());
         rn.addLight(s);
         
         return s;
+    }
+    
+    private BasicShadowRenderer createShadows(){
+        BasicShadowRenderer bsr = new BasicShadowRenderer(am, 256);
+        //bsr.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal()); // light direction
+        bsr.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal()); // light direction
+        
+        vp.addProcessor(bsr);
+        
+        return bsr;
     }
     
    

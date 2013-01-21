@@ -94,6 +94,7 @@ public class Lover {
         
         lover.setMaterial(mat);
         lover.setQueueBucket(RenderQueue.Bucket.Transparent);
+        lover.setShadowMode(RenderQueue.ShadowMode.Cast);
         
                 
         lover.setLocalTranslation(Vector3f.ZERO);
