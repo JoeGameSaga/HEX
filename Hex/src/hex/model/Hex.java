@@ -45,8 +45,8 @@ public class Hex {
         Material mat = new Material( 
             assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
         TextureKey textureKey = new TextureKey("Models/Hex/hex.png", true);
-        textureKey.setAnisotropy(4);
-        textureKey.setGenerateMips(true);
+        //textureKey.setAnisotropy(4);
+        //textureKey.setGenerateMips(true);
         Texture loadTexture = assetManager.loadTexture(textureKey);
         loadTexture.setMagFilter(Texture.MagFilter.Nearest);
         mat.setTexture("ColorMap", loadTexture);

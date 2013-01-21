@@ -9,6 +9,7 @@ import com.jme3.light.DirectionalLight;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import hex.model.HexBlock;
+import hex.model.Lover;
 import hex.model.Lucy;
 import hex.model.Tree;
 import java.util.ArrayList;
@@ -29,6 +30,9 @@ public class ModelLoader {
     private Tree tree1 = null;
     private Tree tree2 = null;
     private Tree tree3 = null;
+    private Lover depression = null;
+    private Lover anger = null;
+    private Lover jealousy = null;
     
     private ModelLoader(){
         createDemoHex();
@@ -55,6 +59,22 @@ public class ModelLoader {
         //lucy.setPosition(270,410,1100);
         lucy.setPosition(270,402,1100);
         lucy.attachToNode(rn);
+        
+        depression = Lover.createLover(am, Vector3f.NAN);
+        depression.loadDepressedLover(am);
+        depression.setPosition(300, 402, 1000);
+        depression.attachToNode(rn);
+        
+        //need to make hex faces a bit thicker, but so far looking good!
+        anger = Lover.createLover(am, Vector3f.NAN);
+        anger.loadAngryLover(am);
+        anger.setPosition(600, 402, 1500);
+        anger.attachToNode(rn);
+        
+        jealousy = Lover.createLover(am, Vector3f.NAN);
+        jealousy.loadJealousLover(am);
+        jealousy.setPosition(400, 652, 600);
+        jealousy.attachToNode(rn);
         
         tree1 = Tree.createTree(am, new Vector3f());
         tree1.setPosition(900,410,1200);

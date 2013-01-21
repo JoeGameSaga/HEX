@@ -27,7 +27,7 @@ public class Main extends SimpleApplication {
        modelLoader = ModelLoader.create(this.getRootNode(), this.getAssetManager());
        hCam = HCam.create(this.getViewPort().getCamera(), this.getFlyByCamera());
        hexUI = HUI.create(hCam, this.getAssetManager(), this.getGuiNode(), this.guiFont); 
-       hexUI.writeText("Hello Hex!");
+       hexUI.writeText("Hello Lucy!");
     }
     
     
