@@ -10,6 +10,7 @@ import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import hex.model.HexBlock;
 import hex.model.Lucy;
+import hex.model.Tree;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -25,6 +26,9 @@ public class ModelLoader {
     
     private ArrayList<HexBlock> hexBlockGrid = new ArrayList<HexBlock>();
     private Lucy lucy = null;
+    private Tree tree1 = null;
+    private Tree tree2 = null;
+    private Tree tree3 = null;
     
     private ModelLoader(){
         createDemoHex();
@@ -45,9 +49,26 @@ public class ModelLoader {
         hexBlockGrid.add(HexBlock.create(rn, am, 6, 0, 6));
         hexBlockGrid.add(HexBlock.create(rn, am, 2, 6, 2));
         
+        
+        //I will clean this up later, just testing models
         lucy = Lucy.createLucy(am, new Vector3f());
-        lucy.setPosition(270,410,1100);
+        //lucy.setPosition(270,410,1100);
+        lucy.setPosition(270,402,1100);
         lucy.attachToNode(rn);
+        
+        tree1 = Tree.createTree(am, new Vector3f());
+        tree1.setPosition(900,410,1200);
+        tree1.attachToNode(rn);
+        
+        tree2 = Tree.createTree(am, new Vector3f());
+        tree2.setPosition(90,410,900);
+        tree2.attachToNode(rn);
+        
+        tree3 = Tree.createTree(am, new Vector3f());
+        tree3.setPosition(150,650,500);
+        tree3.attachToNode(rn);
+        
+        
         sun = createSunlight();
     }
     
