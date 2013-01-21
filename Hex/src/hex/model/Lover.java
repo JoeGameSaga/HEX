@@ -20,7 +20,7 @@ import com.jme3.texture.Texture;
  * @author Joseph
  * 
  * A lover is a being of pure energy formed from lucys amulet
- * when a lover strays too far from lucy its heart beings to empty
+ * when a lover strays too far from lucy its heart begins to empty
  * and it dies. If lucy dies or exits the level all lovers die.
  * Lovers are meant for 4 player multiplayer.
  * presumably, these are boyfriends lucy had in the past who died.
