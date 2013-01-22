@@ -23,6 +23,7 @@ import hex.model.HexBlock;
 import hex.model.Lantern;
 import hex.model.Lover;
 import hex.model.Lucy;
+import hex.model.Sun;
 import hex.model.Tree;
 import java.util.ArrayList;
 import java.util.Vector;
@@ -36,8 +37,7 @@ public class ModelLoader {
     private static AssetManager am;
     private static Node rn;
     private static ViewPort vp;
-    private DirectionalLight sun = null;
-    private BasicShadowRenderer shadow = null;
+    private Sun sun = null;
     
     private ArrayList<HexBlock> hexBlockGrid = new ArrayList<HexBlock>();
     private Lucy lucy = null;
@@ -111,8 +111,7 @@ public class ModelLoader {
         lantern.attachToNode(rn);
         Lantern lantern2 = Lantern.createLantern(am, new Vector3f(180, 900, 500));
         lantern2.attachToNode(rn);
-        //sun = createSunlight();
-        shadow = createShadows();
+        sun = Sun.createDefaultSun(am, rn, vp);
     }
     
     private void createTestSphere(){
@@ -136,24 +135,6 @@ public class ModelLoader {
     }
     
     
-    private DirectionalLight createSunlight(){
-        
-        DirectionalLight s = new DirectionalLight();
-        //s.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal());
-        s.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal());
-        rn.addLight(s);
-        
-        return s;
-    }
-    
-    private BasicShadowRenderer createShadows(){
-        BasicShadowRenderer bsr = new BasicShadowRenderer(am, 256);
-        //bsr.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal()); // light direction
-        bsr.setDirection(new Vector3f(-0.1f, -0.7f, -1.0f).normalizeLocal()); // light direction
-        
-        vp.addProcessor(bsr);
-        
-        return bsr;
-    }
+   
     
 }
