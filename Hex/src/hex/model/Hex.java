@@ -43,8 +43,9 @@ public class Hex {
     private void loadBasicHex(AssetManager assetManager){
         hex = assetManager.loadModel("Models/Hex/hex.j3o");
         
-        Material mat = new Material( 
-            assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        Material mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        //Material mat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        
         TextureKey textureKey = new TextureKey("Models/Hex/hex.png", true);
         textureKey.setAnisotropy(4);
         textureKey.setGenerateMips(true);
@@ -54,11 +55,11 @@ public class Hex {
         //relates to debug mode later
         //mat.setColor("ColorMap", ColorRGBA.Blue); 
         
-        //mat.setTexture("DiffuseMap", loadTexture);
-        //mat.setBoolean("UseMaterialColors",true);
-        //mat.setColor("Specular",ColorRGBA.White);
-        //mat.setColor("Diffuse",ColorRGBA.White);
-        //mat.setFloat("Shininess", 0f);
+        /*mat.setTexture("DiffuseMap", loadTexture);
+        mat.setBoolean("UseMaterialColors",true);
+        mat.setColor("Specular",ColorRGBA.White);
+        mat.setColor("Diffuse",ColorRGBA.White);
+        mat.setFloat("Shininess", 0f);*/
         
         
         hex.setMaterial(mat);

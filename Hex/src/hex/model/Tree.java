@@ -27,11 +27,10 @@ public class Tree {
     private float zLenght = 150;
     private Material mat = null;
     
-    
-    
     private Tree(AssetManager assetManager, Vector3f pos){
         position=pos;
         loadTree(assetManager);
+        //createTestSphere(assetManager);
     }
     
     
@@ -43,23 +42,28 @@ public class Tree {
         return new Tree(assetManager, pos);
     }
     
+    
     private void loadTree(AssetManager assetManager){
         tree = assetManager.loadModel("Models/Tree/tree.j3o");
         
-        mat = new Material( 
-            assetManager, "Common/MatDefs/Light/Lighting.j3md");
-        TextureKey textureKey = new TextureKey("Models/Tree/tree.png", true);
+        //mat = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
+        mat = new Material(assetManager, "Common/MatDefs/Light/Lighting.j3md");
+        /*TextureKey textureKey = new TextureKey("Models/Tree/tree.png", true);
         textureKey.setAnisotropy(4);
         textureKey.setGenerateMips(true);
         Texture loadTexture = assetManager.loadTexture(textureKey);
-        loadTexture.setMagFilter(Texture.MagFilter.Nearest);
+        loadTexture.setMagFilter(Texture.MagFilter.Nearest);*/
+        
+        Texture loadTexture = assetManager.loadTexture("Models/Tree/tree.png");
         //mat.setTexture("ColorMap", loadTexture);
         
         mat.setTexture("DiffuseMap", loadTexture);
         mat.setBoolean("UseMaterialColors",true);
         mat.setColor("Specular",ColorRGBA.White);
         mat.setColor("Diffuse",ColorRGBA.White);
+        mat.setColor("Ambient",ColorRGBA.White);
         mat.setFloat("Shininess", 0f);
+        
         
         tree.setMaterial(mat);
         tree.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);

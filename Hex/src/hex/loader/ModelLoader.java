@@ -5,13 +5,22 @@
 package hex.loader;
 
 import com.jme3.asset.AssetManager;
+import com.jme3.effect.ParticleEmitter;
+import com.jme3.effect.ParticleMesh;
 import com.jme3.light.DirectionalLight;
+import com.jme3.light.PointLight;
+import com.jme3.material.Material;
+import com.jme3.math.ColorRGBA;
 import com.jme3.math.Vector3f;
 import com.jme3.renderer.ViewPort;
 import com.jme3.renderer.queue.RenderQueue;
+import com.jme3.scene.Geometry;
 import com.jme3.scene.Node;
+import com.jme3.scene.shape.Sphere;
 import com.jme3.shadow.BasicShadowRenderer;
+import com.jme3.util.TangentBinormalGenerator;
 import hex.model.HexBlock;
+import hex.model.Lantern;
 import hex.model.Lover;
 import hex.model.Lucy;
 import hex.model.Tree;
@@ -96,8 +105,34 @@ public class ModelLoader {
         tree3.attachToNode(rn);
         
         
-        sun = createSunlight();
+        //createTestSphere();
+        
+        Lantern lantern = Lantern.createLantern(am, new Vector3f(270, 500, 1150));
+        lantern.attachToNode(rn);
+        Lantern lantern2 = Lantern.createLantern(am, new Vector3f(180, 900, 500));
+        lantern2.attachToNode(rn);
+        //sun = createSunlight();
         shadow = createShadows();
+    }
+    
+    private void createTestSphere(){
+            Sphere rock = new Sphere(32,32, 2f);
+            Geometry shiny_rock = new Geometry("Shiny rock", rock);
+            
+    Material mat_lit = new Material(am, "Common/MatDefs/Light/Lighting.j3md");
+    //mat_lit.setTexture("DiffuseMap", am.loadTexture("Textures/Terrain/Pond/Pond.jpg"));
+    //mat_lit.setTexture("NormalMap", am.loadTexture("Textures/Terrain/Pond/Pond_normal.png"));
+    mat_lit.setBoolean("UseMaterialColors",true);    
+    mat_lit.setColor("Specular",ColorRGBA.White);
+    mat_lit.setColor("Diffuse",ColorRGBA.White);
+    mat_lit.setColor("Ambient",ColorRGBA.White);
+    mat_lit.setFloat("Shininess", 5f); // [1,128]    
+    shiny_rock.setMaterial(mat_lit);
+    shiny_rock.setLocalTranslation(300, 602, 1400); // Move it a bit
+    shiny_rock.setShadowMode(RenderQueue.ShadowMode.CastAndReceive);
+    shiny_rock.scale(50);
+    rn.attachChild(shiny_rock);
+    
     }
     
     
@@ -120,12 +155,5 @@ public class ModelLoader {
         
         return bsr;
     }
-    
-   
-    
-    
-    
-            
-
     
 }
